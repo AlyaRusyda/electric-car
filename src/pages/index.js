@@ -5,6 +5,9 @@ import Headline from '../components/Headline';
 import Car from '../components/Car';
 import LocationPopup from '../components/LocationPopup';
 import Future from '../components/Future';
+import Benefit from '../components/Benefit';
+import Care from '../components/Care';
+import Faq from '../components/Faq';
 const App = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -28,6 +31,9 @@ const App = () => {
       <Headline />
       <Car />
       <Future />
+      <Benefit />
+      <Care />
+      <Faq />
       <LocationPopup 
         isOpen={isPopupOpen} 
         onClose={() => setIsPopupOpen(false)} 

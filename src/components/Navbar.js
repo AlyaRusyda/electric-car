@@ -10,7 +10,11 @@ const Navbar = () => {
 
   const menuLinks = [
     { name: translations.menu.home, link: "/" },
-    { name: translations.menu.favorite, link: "/#favorit" },
+    { name: translations.menu.catalog, link: "/#catalog" },
+    { name: translations.menu.adv, link: "/#future" },
+    { name: translations.menu.benefit, link: "/#benefit" },
+    { name: translations.menu.tips, link: "/#care" },
+    { name: translations.menu.faq, link: "/#faq" },
   ];
 
   useEffect(() => {

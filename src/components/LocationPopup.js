@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import TranslationContext from './TranslationContext';
 
 const LocationPopup = ({ isOpen, onClose, onLocationSelect }) => {
+    const { translations } = useContext(TranslationContext);
     const [provinces, setProvinces] = useState([]);
     const [cities, setCities] = useState([]);
     const [selectedProvince, setSelectedProvince] = useState('');
@@ -25,7 +27,7 @@ const LocationPopup = ({ isOpen, onClose, onLocationSelect }) => {
 
     const handleProvinceChange = (e) => {
         setSelectedProvince(e.target.value);
-        setCities([]); // Clear cities when changing province
+        setCities([]);
         fetchCities(e.target.value);
     };
 
@@ -40,7 +42,7 @@ const LocationPopup = ({ isOpen, onClose, onLocationSelect }) => {
             localStorage.setItem('city_name', cityName);
             onLocationSelect(provinceName, cityName);
 
-            alert("Berhasil memilih kota kamu!");
+            alert(`${translations.alert}`);
             window.location.href = "/#favorit";
         } else {
             alert('Please select both a province and a city.');

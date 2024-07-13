@@ -9,7 +9,6 @@ const Headline = () => {
       {/* Card */}
       {translations.headline.map((isi, index) => (
         <div className='rounded-xl relative' key={index}>
-          {/* Overlay */}
           <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
             <p className='font-bold text-2xl px-4 pt-4'>{isi.title}</p>
             <p className='px-4'>{isi.sub}</p>
