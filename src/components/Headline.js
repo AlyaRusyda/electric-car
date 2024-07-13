@@ -6,7 +6,6 @@ const Headline = () => {
 
   return (
     <div className='max-w-[1640px] mx-auto p-4 grid md:grid-cols-3 gap-6'>
-      {/* Card */}
       {translations.headline.map((isi, index) => (
         <div className='rounded-xl relative' key={index}>
           <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>

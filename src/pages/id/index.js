@@ -9,7 +9,7 @@ import TranslationContext from "../../components/TranslationContext";
 
 function Detail() {
   const { id } = useParams();
-  const { translations } = useContext(TranslationContext); // Use the context
+  const { translations } = useContext(TranslationContext);
   const [car, setCar] = useState(null);
   const [qty, setQty] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,8 +25,8 @@ function Detail() {
         const data = await response.json();
         const carItem = data.record.find((e) => e.id === Number(id));
         setCar(carItem || {});
-        setSelectedImage(carItem.image);  // Set default image
-        setSelectedColor("Default Color"); // Set default color name
+        setSelectedImage(carItem.image);
+        setSelectedColor("Default Color");
       } catch (error) {
         console.error("Error fetching car data:", error);
       }
@@ -110,7 +110,6 @@ function Detail() {
             </div>
           </div>
 
-          {/* Product's details */}
           <div className="flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 mt-80">
             <h2 className="text-2xl font-semibold">{car.make} {car.model}</h2>
             <p className="mt-4 text-gray-700 text-sm">
