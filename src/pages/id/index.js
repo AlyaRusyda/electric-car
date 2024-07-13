@@ -36,11 +36,11 @@ function Detail() {
   });
 
   if (car === null) {
-    return <div>{translations.loading}</div>;
+    return <div>{translations.detail.loading}</div>;
   }
 
   if (Object.keys(car).length === 0) {
-    return <div>{translations.itemNotFound}</div>;
+    return <div>{translations.detail.itemNotFound}</div>;
   }
 
   const total = qty * car.price;
@@ -76,33 +76,33 @@ function Detail() {
               <table className="table-auto w-full text-xs mt-6">
                 <tbody>
                   <tr>
-                    <td className="text-gray-500 align-top">{translations.transmission}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.transmission}</td>
                     <td className="font-semibold align-top">: {car.transmission}</td>
-                    <td className="text-gray-500 align-top">{translations.battery}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.battery}</td>
                     <td className="font-semibold align-top">: {car.battery} kWh</td>
                   </tr>
                   <tr>
-                    <td className="text-gray-500 align-top">{translations.emission}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.emission}</td>
                     <td className="font-semibold align-top">: {car.emission} g/km</td>
-                    <td className="text-gray-500 align-top">{translations.fastCharge}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.fastCharge}</td>
                     <td className="font-semibold align-top">: {car.fastCharge}</td>
                   </tr>
                   <tr>
-                    <td className="text-gray-500 align-top">{translations.mile}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.mile}</td>
                     <td className="font-semibold align-top">: {car.mile} km</td>
-                    <td className="text-gray-500 align-top">{translations.regCharge}</td>
-                    <td className="font-semibold align-top">: {car.regCharge} {translations.hours}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.regCharge}</td>
+                    <td className="font-semibold align-top">: {car.regCharge} {translations.detail.hours}</td>
                   </tr>
                   <tr>
-                    <td className="text-gray-500 align-top">{translations.rimSize}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.rimSize}</td>
                     <td className="font-semibold align-top">: {car.velg} inch</td>
-                    <td className="text-gray-500 align-top">{translations.tireSize}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.tireSize}</td>
                     <td className="font-semibold align-top">: {car.tire}</td>
                   </tr>
                   <tr>
-                    <td className="text-gray-500 align-top">{translations.speed}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.speed}</td>
                     <td className="font-semibold align-top">: {car.speed} km/h</td>
-                    <td className="text-gray-500 align-top">{translations.capacity}</td>
+                    <td className="text-gray-500 align-top">{translations.detail.capacity}</td>
                     <td className="font-semibold align-top">: {car.capacity}</td>
                   </tr>
                 </tbody>
@@ -120,17 +120,17 @@ function Detail() {
                   onClick={() => setIsExpanded((prev) => !prev)}
                   className="p-0 border-0 text-gray-400 text-sm underline ml-1"
                 >
-                  {isExpanded ? translations.showLess : translations.showMore}
+                  {isExpanded ? translations.detail.showLess : translations.detail.showMore}
                 </button>
               )}
             </p>
             <div className="mt-8 border-t pt-4">
-              <p className="text-gray-500 text-sm">{translations.price}</p>
+              <p className="text-gray-500 text-sm">{translations.detail.price}</p>
               <p className="text-lg font-semibold">{formatPrice(car.price)}</p>
             </div>
 
             <div className="mt-4 border-t pt-4">
-              <p className="text-gray-500 text-sm">{translations.quantity}</p>
+              <p className="text-gray-500 text-sm">{translations.detail.quantity}</p>
               <div className="mt-1 flex items-center space-x-3">
                 <button
                   onClick={() => setQty((prev) => prev - 1)}
@@ -156,13 +156,13 @@ function Detail() {
                   disabled
                   className="mt-8 border rounded py-2 px-6 bg-emerald-500 hover:bg-emerald-600 border-emerald-500 hover:border-emerald-600 focus:ring-4 focus:ring-opacity-50 focus:ring-emerald-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
                 >
-                  {translations.addToCart} (Rp {formatPrice(total)})
+                  {translations.detail.addToCart} (Rp {formatPrice(total)})
                 </button>
                 <a
                   href="/#favorit"
                   className="mt-8 border rounded py-2 px-6 bg-gray-500 hover:text-gray-600 hover:bg-gray-100 border-gray-600 hover:border-gray-600 focus:ring-4 focus:ring-opacity-50 focus:ring-gray-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
                 >
-                  {translations.back}
+                  {translations.detail.back}
                 </a>
               </div>
             </div>

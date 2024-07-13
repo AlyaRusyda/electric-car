@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 const App = () => {
   return (
     <TranslationProvider>
-      <div className="overflow-hidden font-primary">
+      <div className="overflow-hidden font-primary font-medium">
         <Router>
           <Routes>
             <Route path="/" element={<Index />} />

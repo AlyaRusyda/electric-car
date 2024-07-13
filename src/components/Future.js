@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import TranslationContext from "./TranslationContext";
 
 const Future = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const { translations } = useContext(TranslationContext);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -11,17 +13,14 @@ const Future = () => {
       <img
         src="https://www.oto.com/2021/images/ev/ev-features-web-car.png"
         alt="Masa depan otomotif adalah listrik"
-        className="align-top"
+        className="h-full"
       />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 pt-8">
         <h1 className="text-4xl font-[700] opacity-85 capitalize">
-          mengapa masa depan otomitif adalah listrik
+          {translations.future.title}
         </h1>
         <p className="text-md">
-          Mobil listrik ditenagai energi listrik yang tersimpan di dalam
-          baterai. Dibandingkan mobil ICE (Internal Combustion Engine), mobil
-          listrik jauh lebih senyap dan tidak menghasilkan polutan. Lalu berikut
-          ini keistimewaan-keistimewaan lainnya:
+          {translations.future.desc}
         </p>
         <div id="accordion-open" className="w-full mt-6">
           {[...Array(4)].map((_, index) => (
@@ -46,12 +45,12 @@ const Future = () => {
                       <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848Zm6.75.51a.186.186 0 0 0-.23.034L6.05 7.246a.188.188 0 0 0 .137.316h1.241l-.673 2.195a.19.19 0 0 0 .085.218c.075.043.17.03.23-.034l2.88-3.187a.188.188 0 0 0-.137-.316H8.572l.782-2.195a.19.19 0 0 0-.085-.218Z" />
                     </svg>
                     {index === 0
-                      ? "Biaya Kepemilikan Terjangkau"
+                      ? `${translations.future.title1}`
                       : index === 1
-                      ? "Mudah Dikendarai"
+                      ? `${translations.future.title2}`
                       : index === 2
-                      ? "Ramah Lingkungan"
-                      : "Kemudahan Mengisi Baterai Di Rumah"}
+                      ? `${translations.future.title3}`
+                      : `${translations.future.title4}`}
                   </span>
                   <svg
                     data-accordion-icon
@@ -82,43 +81,28 @@ const Future = () => {
                   {index === 0 && (
                     <>
                       <p className="mb-2 text-gray-500">
-                        Meski harganya mahal dibandingkan mobil biasa, biaya
-                        kepemilikan dan perawatan mobil listrik lebih murah.
-                        Faktor usia baterai panjang dan insentif pajak dari
-                        pemerintah juga menambah efisiensi biaya.
+                        {translations.future.desc1}
                       </p>
                     </>
                   )}
                   {index === 1 && (
                     <>
                       <p className="mb-2 text-gray-500">
-                        Karena tidak memiliki transmisi dengan jumlah gigi
-                        banyak, mengendarai mobil listrik terasa mudah.
-                        Pengendalian, responsivitas dan kenyamanan juga baik
-                        karena titik pusat gravitasi rendah. Motor listrik juga
-                        menawarkan akselerasi dan deselerasi halus.
+                        {translations.future.desc2}
                       </p>
                     </>
                   )}
                   {index === 2 && (
                     <>
                       <p className="mb-2 text-gray-500">
-                        Dengan memilih mobil listrik, pemilik ikut serta dalam
-                        memelihara bumi. Tidak seperti mobil ICE, mobil listrik
-                        memakai energi terbarukan 100% yang tidak mengeluarkan
-                        asap knalpot dan gas rumah kaca.
+                        {translations.future.desc3}
                       </p>
                     </>
                   )}
                   {index === 3 && (
                     <>
                       <p className="mb-2 text-gray-500">
-                        Seperti alat elektronik, mobil listrik juga sangat mudah
-                        dicas. Meskipun pengisian baterai membutuhkan waktu
-                        lebih lama, beberapa perencanaan akan mengurangi
-                        dampaknya. Seringkali pengisian dilakukan dalam
-                        semalaman. Kalau pakai metode pengisi daya cepat
-                        (100kW), proses selesai dalam beberapa menit.
+                        {translations.future.desc4}
                       </p>
                     </>
                   )}

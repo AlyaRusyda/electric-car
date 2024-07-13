@@ -35,7 +35,7 @@ const NavbarDetails = () => {
         </div>
         <button
           onClick={toggleLanguage}
-          className="ml-4 p-2 bg-emerald-600 text-white rounded-lg border-0"
+          className="ml-2 h-10 w-8 bg-white border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-100 flex items-center justify-center transition-colors"
         >
           {language === 'en' ? 'EN' : 'ID'}
         </button>
