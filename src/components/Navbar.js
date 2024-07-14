@@ -18,9 +18,13 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.scrollY > 0 ? setSticky(true) : setSticky(false);
-    });
+    const handleScroll = () => {
+      setSticky(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const toggleLanguage = () => {
@@ -29,80 +33,56 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full left-0 top-0 z-[999] md:px-24 ${
-        sticky
-          ? "p-2 bg-white/90 text-emerald-800 w-full fixed md:drop-shadow-md"
-          : "p-2 bg-transparent text-emerald-800 w-full fixed"
+      className={`fixed w-full left-0 top-0 z-[999] px-5 md:px-24 ${
+        sticky ? "bg-white/90 text-emerald-800 shadow-md" : "bg-transparent text-emerald-800"
       }`}
     >
-      <div className="flex items-center justify-between">
-        <div className="mx-7">
-          <a
-            href="/"
-            className="flex items-center justify-start uppercase text-2xl md:text-3xl font-bold hover:text-emerald-500"
-          >
-            mobil
-            <span className="w-60 text-emerald-500 hover:text-emerald-800">
-              istrik
-            </span>
-          </a>
-        </div>
-        <div className="container flex justify-between h-16 mx-auto md:justify-end md:space-x-8">
-          <ul className="items-stretch hidden space-x-3 md:flex">
-            {menuLinks?.map((menu, index) => (
-              <li className="flex" key={index}>
-                <a
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 mb-1 border-b-2 border-transparent hover:text-emerald-500 uppercase"
-                  href={menu.link}
-                >
-                  {menu.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="flex items-center justify-between h-16 mt-2">
+        <a
+          href="/"
+          className="text-2xl md:text-3xl font-bold uppercase hover:text-emerald-500"
+        >
+          mobil
+          <span className="text-emerald-500">istrik</span>
+        </a>
+
+      <div className="flex items-center">
+        <ul className="hidden md:flex space-x-3">
+          {menuLinks.map((menu, index) => (
+            <li key={index}>
+              <a
+                href={menu.link}
+                className="px-4 mb-1 border-b-2 border-transparent hover:text-emerald-500 uppercase"
+              >
+                {menu.name}
+              </a>
+            </li>
+          ))}
+        </ul>
         <button
           onClick={toggleLanguage}
-          className="ml-2 h-10 w-8 bg-white border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-100 flex items-center justify-center transition-colors"
+          className="ml-6 md:h-10 md:w-8 w-4 h-9 md:text-base text-sm bg-white border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-100 flex items-center justify-center transition-colors"
         >
           {language === "en" ? "EN" : "ID"}
         </button>
-        <div className={` ${sticky ? "hidden" : "block"} `}>
-          <div
-            onClick={() => setOpen(!open)}
-            className={`z-[999] ${
-              open ? "text-emerald-800" : "text-emerald-800"
-            } text-3xl md:hidden m-5`}
-          >
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setOpen(!open)} className="text-3xl md:m-5 border-0">
             <Hamburger />
-          </div>
+          </button>
         </div>
-        <div className={` ${sticky ? "block" : "hidden"} `}>
-          <div
-            onClick={() => setOpen(!open)}
-            className={`z-[999] ${
-              open ? "text-emerald-800" : "text-emerald-800"
-            } text-3xl md:hidden m-5`}
-          >
-            <Hamburger />
-          </div>
-        </div>
+      </div>
+
         <div
-          className={`${
-            sticky
-              ? "md:hidden ml-0 text-emerald-800 fixed w-full px-7 py-8 font-medium bg-white/70 top-0 duration-300"
-              : "md:hidden ml-0 text-emerald-800 fixed w-full px-7 py-8 font-medium bg-white/70 top-0 duration-300"
-          } ${open ? "top-0" : "top-[-100%]"}`}
+          className={`fixed inset-0 bg-white/80 px-7 py-6 font-medium text-emerald-800 transform ${
+            open ? "translate-y-0" : "-translate-y-full"
+          } transition-transform duration-300 md:hidden`}
         >
-          <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg uppercase">
-            {menuLinks?.map((menu, i) => (
-              <li
-                onClick={() => setOpen(false)}
-                key={i}
-                className="px-6 hover:text-emerald-500"
-              >
-                <a href={menu?.link}>{menu?.name}</a>
+          <ul className="flex flex-col gap-10 text-lg uppercase">
+            {menuLinks.map((menu, index) => (
+              <li key={index} onClick={() => setOpen(false)}>
+                <a href={menu.link} className="hover:text-emerald-500">
+                  {menu.name}
+                </a>
               </li>
             ))}
           </ul>

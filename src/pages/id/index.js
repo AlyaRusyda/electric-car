@@ -20,7 +20,7 @@ function Detail() {
     async function fetchCar() {
       try {
         const response = await fetch(
-          "https://api.jsonbin.io/v3/b/669111ddacd3cb34a864ffc8"
+          "https://api.jsonbin.io/v3/b/66933c7ead19ca34f8875a5f"
         );
         const data = await response.json();
         const carItem = data.record.find((e) => e.id === Number(id));
@@ -55,11 +55,11 @@ function Detail() {
   return (
     <>
       <NavbarDetails />
-      <div className="container lg:max-w-screen-lg mx-auto py-24 px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12">
+      <div className="container lg:max-w-screen-lg mx-auto md:py-24 py-12 px-6">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-12">
           {/* Product's image */}
           <div className="relative">
-            <div className="border border-opacity-50 rounded-md shadow-lg p-4 mt-4 w-96">
+            <div className="md:border md:border-opacity-50 rounded-md md:shadow-lg md:p-4 p-6 mt-4 w-96">
               <Carousel showArrows={true} dynamicHeight={true}>
                 <div onClick={() => { setSelectedImage(car.image); setSelectedColor("Default Color"); }}>
                   <img src={car.image} alt="Default" className="w-96 rounded-md" />
@@ -73,7 +73,7 @@ function Detail() {
                   </div>
                 ))}
               </Carousel>
-              <table className="table-auto w-full text-xs mt-6">
+              <table className="table-auto w-full md:text-xs text-[11px] md:mt-6">
                 <tbody>
                   <tr>
                     <td className="text-gray-500 align-top">{translations.detail.transmission}</td>
@@ -110,9 +110,9 @@ function Detail() {
             </div>
           </div>
 
-          <div className="flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 mt-80">
-            <h2 className="text-2xl font-semibold">{car.make} {car.model}</h2>
-            <p className="mt-4 text-gray-700 text-sm">
+          <div className="flex-1 max-w-md md:border md:border-opacity-50 rounded-md md:shadow-lg md:p-6 md:mt-80">
+            <h2 className="md:text-2xl text-xl font-semibold">{car.make} {car.model}</h2>
+            <p className="md:mt-4 mt-2 text-gray-700 md:text-sm text-xs">
               {isExpanded || !shouldShowFullText ? car.description : truncatedDescription}
               {shouldShowFullText && (
                 <button
@@ -124,12 +124,12 @@ function Detail() {
               )}
             </p>
             <div className="mt-8 border-t pt-4">
-              <p className="text-gray-500 text-sm">{translations.detail.price}</p>
-              <p className="text-lg font-semibold">{formatPrice(car.price)}</p>
+              <p className="text-gray-500 md:text-sm text-xs">{translations.detail.price}</p>
+              <p className="md:text-lg font-semibold">{formatPrice(car.price)}</p>
             </div>
 
             <div className="mt-4 border-t pt-4">
-              <p className="text-gray-500 text-sm">{translations.detail.quantity}</p>
+              <p className="text-gray-500 md:text-sm text-xs">{translations.detail.quantity}</p>
               <div className="mt-1 flex items-center space-x-3">
                 <button
                   onClick={() => setQty((prev) => prev - 1)}
@@ -138,7 +138,7 @@ function Detail() {
                 >
                   <Minus />
                 </button>
-                <p className="font-semibold text-xl">{qty}</p>
+                <p className="font-semibold md:text-xl text-md">{qty}</p>
                 <button
                   onClick={() => setQty((prev) => prev + 1)}
                   disabled={qty >= car.stock}
@@ -151,13 +151,13 @@ function Detail() {
                 <button
                   type="button"
                   disabled
-                  className="mt-8 border rounded py-2 px-6 bg-emerald-500 hover:bg-emerald-600 border-emerald-500 hover:border-emerald-600 focus:ring-4 focus:ring-opacity-50 focus:ring-emerald-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
+                  className="mt-8 border rounded py-2 px-6 text-sm md:text-lg bg-emerald-500 hover:bg-emerald-600 border-emerald-500 hover:border-emerald-600 focus:ring-4 focus:ring-opacity-50 focus:ring-emerald-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
                 >
                   {translations.detail.addToCart} (Rp {formatPrice(total)})
                 </button>
                 <a
                   href="/#catalog"
-                  className="mt-8 border rounded py-2 px-6 bg-gray-500 hover:text-gray-600 hover:bg-gray-100 border-gray-600 hover:border-gray-600 focus:ring-4 focus:ring-opacity-50 focus:ring-gray-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
+                  className="mt-8 border rounded py-2 px-6 text-sm md:text-lg bg-gray-500 hover:text-gray-600 hover:bg-gray-100 border-gray-600 hover:border-gray-600 focus:ring-4 focus:ring-opacity-50 focus:ring-gray-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex flex-row"
                 >
                   {translations.detail.back}
                 </a>

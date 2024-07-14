@@ -6,36 +6,49 @@ const LocationPopup = ({ isOpen, onClose, onLocationSelect }) => {
     const { translations } = useContext(TranslationContext);
     const [provinces, setProvinces] = useState([]);
     const [cities, setCities] = useState([]);
-    const [selectedProvince, setSelectedProvince] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
+    const [selectedProvince, setSelectedProvince] = useState(localStorage.getItem('province') || '');
+    const [selectedCity, setSelectedCity] = useState(localStorage.getItem('city') || '');
 
     useEffect(() => {
         if (isOpen) {
             fetchProvinces();
+            if (selectedProvince) {
+                fetchCities(selectedProvince);
+            }
         }
-    }, [isOpen]);
+    });
 
     const fetchProvinces = async () => {
-        const response = await axios.get('http://localhost:5000/api/provinces');
-        setProvinces(response.data.rajaongkir.results);
+        try {
+            const response = await axios.get('http://localhost:5000/api/provinces');
+            setProvinces(response.data.rajaongkir.results);
+        } catch (error) {
+            console.error("Error fetching provinces:", error);
+        }
     };
 
     const fetchCities = async (provinceId) => {
-        const response = await axios.get(`http://localhost:5000/api/cities/${provinceId}`);
-        setCities(response.data.rajaongkir.results);
+        try {
+            const response = await axios.get(`http://localhost:5000/api/cities/${provinceId}`);
+            setCities(response.data.rajaongkir.results);
+        } catch (error) {
+            console.error("Error fetching cities:", error);
+        }
     };
 
     const handleProvinceChange = (e) => {
-        setSelectedProvince(e.target.value);
+        const provinceId = e.target.value;
+        setSelectedProvince(provinceId);
         setCities([]);
-        fetchCities(e.target.value);
+        setSelectedCity('');
+        fetchCities(provinceId);
     };
 
     const handleSubmit = () => {
         if (selectedProvince && selectedCity) {
             const provinceName = provinces.find(province => province.province_id === selectedProvince)?.province || '';
             const cityName = cities.find(city => city.city_id === selectedCity)?.city_name || '';
-            
+
             localStorage.setItem('province', selectedProvince);
             localStorage.setItem('province_name', provinceName);
             localStorage.setItem('city', selectedCity);
@@ -43,7 +56,7 @@ const LocationPopup = ({ isOpen, onClose, onLocationSelect }) => {
             onLocationSelect(provinceName, cityName);
 
             alert(`${translations.alert}`);
-            window.location.href = "/#favorit";
+            window.location.href = "/";
         } else {
             alert('Please select both a province and a city.');
         }

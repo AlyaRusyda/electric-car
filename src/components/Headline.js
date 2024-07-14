@@ -9,8 +9,8 @@ const Headline = () => {
       {translations.headline.map((isi, index) => (
         <div className='rounded-xl relative' key={index}>
           <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
-            <p className='font-bold text-2xl px-4 pt-4'>{isi.title}</p>
-            <p className='px-4'>{isi.sub}</p>
+            <p className='font-bold md:text-2xl px-4 pt-4'>{isi.title}</p>
+            <p className='text-sm md:text-base px-4'>{isi.sub}</p>
           </div>
           <img
             className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl'

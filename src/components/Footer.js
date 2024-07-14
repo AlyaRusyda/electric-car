@@ -22,25 +22,25 @@ const Footer = () => {
   return (
     <footer className="bg-white shadow-inner-up text-gray-900">
       <div className="container flex flex-col p-4 mx-auto lg:flex-row divide-gray-600">
-        <p className="self-center items-center text-left sm:flex sm:space-y-0 sm:justify-start sm:space-x-0 lg:flex-1 lg:justify-start text-emerald-800">
+        <p className="self-center items-center md:text-left text-center sm:flex sm:space-y-0 sm:justify-start sm:space-x-0 lg:flex-1 lg:justify-start text-emerald-800">
           <a
             href="/"
-            className="flex items-center justify-start uppercase text-2xl md:text-2xl font-bold hover:text-emerald-500 mr-2"
+            className="flex items-center justify-start uppercase text-2xl md:text-2xl font-bold hover:text-emerald-500 md:mr-2"
           >
             mobil
             <span className="text-emerald-500 hover:text-emerald-800">
               istrik
             </span>
           </a>
-          <span className="text-md">© {new Date().getFullYear()} - Alya Rusyda</span>
+          <span className="md:text-base text-sm">© {new Date().getFullYear()} - Alya Rusyda</span>
         </p>
-        <div className="flex justify-center pt-6 lg:pt-0 items-center gap-2">
-          <p className="text-emerald-700">
+        <div className="flex flex-col-reverse md:flex-row justify-center md:pt-6 pt-4 lg:pt-0 items-center gap-2">
+          <p className="text-emerald-700 md:text-base text-[14px]">
             {translations.disc}
           </p>
           <button
             onClick={() => setIsPopupOpen(true)}
-            className="flex items-center gap-1 bg-white text-emerald-600 p-2 border-1.5 rounded-lg border-emerald-600 hover:bg-emerald-600 hover:text-white"
+            className="flex items-center gap-1 bg-white text-emerald-600 md:p-2 p-1 px-2 md:text-base text-[13px] border-1.5 rounded-lg border-emerald-600 hover:bg-emerald-600 hover:text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -10,15 +10,15 @@ const Faq = () => {
   };
 
   return (
-    <section id="faq" className="px-28 py-16 gap-20">
-      <h1 className="text-4xl font-[700] opacity-85 capitalize mb-8">
+    <section id="faq" className="md:px-28 px-8 py-16 gap-20">
+      <h1 className="md:text-4xl text-xl text-center md:text-left font-[700] opacity-85 capitalize mb-8">
         {translations.titleFaq}
       </h1>
       <div className="space-y-4">
         {translations.faq.map((isi, index) => (
           <div key={index} className="border rounded-lg">
             <summary
-              className="flex justify-between items-center px-4 py-6 focus:outline-none cursor-pointer"
+              className="flex justify-between items-center md:px-4 px-3 md:py-6 py-4 focus:outline-none cursor-pointer md:text-base text-sm"
               onClick={() => toggleAccordion(index)}
             >
               <span>{isi.question}</span>
@@ -38,7 +38,7 @@ const Faq = () => {
               </svg>
             </summary>
             {openIndex === index && (
-              <p className="px-4 pb-4 text-sm text-gray-600">
+              <p className="px-4 pb-4 md:text-sm text-[12px] font-normal md:font-medium text-gray-600">
                 {isi.answer}
               </p>
             )}

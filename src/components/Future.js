@@ -9,17 +9,17 @@ const Future = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <section id="future" className="px-28 pb-12 flex gap-10">
+    <section id="future" className="md:px-28 px-8 pb-12 flex flex-col md:flex-row gap-10">
       <img
         src="https://www.oto.com/2021/images/ev/ev-features-web-car.png"
         alt="Masa depan otomotif adalah listrik"
         className="h-full"
       />
-      <div className="flex flex-col gap-4 pt-8">
-        <h1 className="text-4xl font-[700] opacity-85 capitalize">
+      <div className="flex flex-col gap-4 md:pt-8">
+        <h1 className="md:text-4xl text-xl font-[700] opacity-85 capitalize">
           {translations.future.title}
         </h1>
-        <p className="text-md">
+        <p className="md:text-base text-sm">
           {translations.future.desc}
         </p>
         <div id="accordion-open" className="w-full mt-6">
@@ -28,12 +28,12 @@ const Future = () => {
               <h2 id={`accordion-open-heading-${index + 1}`}>
                 <button
                   type="button"
-                  className="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-emerald-200 hover:bg-emerald-100 gap-3"
+                  className="flex items-center justify-between w-full md:p-5 p-4 font-medium text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-emerald-200 hover:bg-emerald-100 gap-3"
                   onClick={() => toggleAccordion(index)}
                   aria-expanded={openIndex === index}
                   aria-controls={`accordion-open-body-${index + 1}`}
                 >
-                  <span className="flex items-center font-semibold text-black/70">
+                  <span className="flex items-center md:text-base text-sm text-left font-semibold text-black/70">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -77,7 +77,7 @@ const Future = () => {
                 className={`${openIndex === index ? "" : "hidden"}`}
                 aria-labelledby={`accordion-open-heading-${index + 1}`}
               >
-                <div className="p-5 border border-b-0 border-gray-200 font-medium text-sm">
+                <div className="p-5 border border-b-0 border-gray-200 font-medium md:text-sm text-xs">
                   {index === 0 && (
                     <>
                       <p className="mb-2 text-gray-500">

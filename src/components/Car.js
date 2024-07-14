@@ -13,7 +13,7 @@ const Car = () => {
   async function getCar() {
     try {
       const response = await fetch(
-        "https://api.jsonbin.io/v3/b/669111ddacd3cb34a864ffc8"
+        "https://api.jsonbin.io/v3/b/66933c7ead19ca34f8875a5f"
       );
       const data = await response.json();
       setCars(data.record);
@@ -47,12 +47,12 @@ const Car = () => {
 
   return (
     <section id="catalog" className="pb-8">
-      <div className="max-w-[1640px] m-auto px-28 py-20">
-        <div className="flex">
-          <h1 className="text-grey-600 font-bold text-3xl text-left mb-12 md:mb-6">
+      <div className="max-w-[1640px] m-auto px-8 md:px-28 py-20">
+        <div className="flex flex-col md:flex-row">
+          <h1 className="text-grey-600 font-bold text-3xl text-left mb-4 md:mb-4">
             {translations.carTitle}
           </h1>
-          <div className="flex flex-col lg:flex-row justify-between mb-4 ml-auto">
+          <div className="flex flex-col lg:flex-row justify-between mb-4 md:ml-auto">
             <input
               type="text"
               placeholder={translations.searchPlaceholder}
@@ -64,7 +64,7 @@ const Car = () => {
         </div>
 
         {/* Display Cars */}
-        <div className="grid grid-cols-3 lg:grid-cols-4 gap-6 pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 pt-4">
           {cars.slice(0, visibleCount).map((item) => (
             <div
               key={item.id}
