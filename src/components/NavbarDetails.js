@@ -30,12 +30,12 @@ const NavbarDetails = () => {
       <div className="flex items-center justify-between">
         <div className="mx-7">
           <a href="/" className="flex items-center justify-start uppercase text-2xl md:text-3xl font-bold hover:text-emerald-500">
-            mobil<span className="w-60 text-emerald-500 hover:text-emerald-800">istrik</span>
+            mobil<span className="md:w-60 w-40 text-emerald-500 hover:text-emerald-800">istrik</span>
           </a>
         </div>
         <button
           onClick={toggleLanguage}
-          className="ml-2 h-10 w-8 bg-white border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-100 flex items-center justify-center transition-colors"
+          className="md:h-10 md:w-8 w-4 h-9 md:mr-0 mr-6 md:text-base text-sm bg-white border border-emerald-800 text-emerald-800 rounded-lg hover:bg-emerald-100 flex items-center justify-center transition-colors"
         >
           {language === 'en' ? 'EN' : 'ID'}
         </button>

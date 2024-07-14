@@ -22,7 +22,7 @@ const Future = () => {
         <p className="md:text-base text-sm">
           {translations.future.desc}
         </p>
-        <div id="accordion-open" className="w-full mt-6">
+        <div id="accordion-open" className="w-full md:mt-6">
           {[...Array(4)].map((_, index) => (
             <div key={index}>
               <h2 id={`accordion-open-heading-${index + 1}`}>

@@ -5,10 +5,10 @@ const Benefit = () => {
     const { translations } = useContext(TranslationContext);
 
   return (
-    <section id="benefit" className="md:px-32 px-8 py-12 flex gap-10 flex-col">
-        <h1 className='text-4xl font-[700] opacity-85 capitalize'>{translations.titleBenefit}</h1>
+    <section id="benefit" className="md:px-32 px-8 py-12 flex md:gap-10 gap-6 flex-col">
+        <h1 className='md:text-4xl text-2xl text-center md:text-left font-[700] opacity-85 capitalize'>{translations.titleBenefit}</h1>
         <div className='flex flex-col md:flex-row gap-12'>
-            <img src='https://www.oto.com/2021/images/ev/ev-pros-cons-web.png' alt='Benefit img' className='max-h-[550px] md:ml-2' />
+            <img src='https://www.oto.com/2021/images/ev/ev-pros-cons-web.png' alt='Benefit img' className='md:max-h-[550px] mx-auto md:ml-2' />
             <div className='flex flex-col w-full gap-4'>
             {translations.benefit.map((isi, index) => (
                 <div key={index} className='border border-1.5 border-gray-300 rounded-xl flex gap-4 p-4'>
